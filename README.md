@@ -22,7 +22,7 @@
 
 ---
 
-## 🤔 Why 9Router?
+## 🤔 Why TalNet Router?
 
 **Stop wasting money, tokens and hitting limits:**
 
