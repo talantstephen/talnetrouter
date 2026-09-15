@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 <div align="center">
-  <img src="./images/pp.jpg" alt="TalNet Router Dashboard" width="800"/>
+  <img src="./images/pp.jpg" alt="TalNet Router Dashboard" width="150" height="189" style="object-fit: cover; border-radius: 8px;"/>
   
   # TalNet Router - FREE AI Router & Token Saver
   
