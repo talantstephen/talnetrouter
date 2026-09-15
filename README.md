@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
   <img src="./images/pp.jpg" alt="TalNet Router Dashboard" width="800"/>
   
@@ -1524,3 +1525,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 <div align="center">
   <sub>Built with ❤️ for developers who code 24/7</sub>
 </div>
+=======
+# talnetrouter
+Free API
+>>>>>>> ec8b643639b5bb9db473c72a6405311ce2140780
