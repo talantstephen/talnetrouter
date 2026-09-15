@@ -1,34 +1,30 @@
-// Guards the deduped Antigravity OAuth client: same values across all 3 sources after refactor.
+// Guards the deduped Antigravity/Gemini OAuth clients: registry transports must derive from shared.js (env-driven).
 import { describe, it, expect } from "vitest";
 
-const EXPECTED = {
-  clientId: "antigravity-oauth-client-id",
-  clientSecret: "antigravity-oauth-client-secret",
-};
-const GOOGLE = {
-  clientId: "google-oauth-client-id",
-  clientSecret: "google-oauth-client-secret",
-};
-
 describe("antigravity oauth client (deduped)", () => {
-  it("shared source holds the canonical credentials", async () => {
-    const { ANTIGRAVITY_OAUTH_CLIENT } = await import("../../open-sse/providers/shared.js");
-    expect(ANTIGRAVITY_OAUTH_CLIENT).toEqual(EXPECTED);
+  it("shared source exposes env-driven clientId/clientSecret with placeholder fallback", async () => {
+    const { ANTIGRAVITY_OAUTH_CLIENT, GOOGLE_OAUTH_CLIENT } = await import("../../open-sse/providers/shared.js");
+    expect(ANTIGRAVITY_OAUTH_CLIENT.clientId).toBeTruthy();
+    expect(ANTIGRAVITY_OAUTH_CLIENT.clientSecret).toBeTruthy();
+    expect(GOOGLE_OAUTH_CLIENT.clientId).toBeTruthy();
+    expect(GOOGLE_OAUTH_CLIENT.clientSecret).toBeTruthy();
+    expect(ANTIGRAVITY_OAUTH_CLIENT.clientId).not.toContain("apps.googleusercontent.com");
+    expect(GOOGLE_OAUTH_CLIENT.clientId).not.toContain("apps.googleusercontent.com");
+    expect(ANTIGRAVITY_OAUTH_CLIENT.clientSecret).not.toContain("GOCSPX");
+    expect(GOOGLE_OAUTH_CLIENT.clientSecret).not.toContain("GOCSPX");
   });
 
-  it("registry transport keeps clientId/clientSecret", async () => {
+  it("registry transports derive clientId/clientSecret from shared.js", async () => {
+    const { ANTIGRAVITY_OAUTH_CLIENT, GOOGLE_OAUTH_CLIENT } = await import("../../open-sse/providers/shared.js");
     const ag = (await import("../../open-sse/providers/registry/antigravity.js")).default;
-    expect(ag.transport.clientId).toBe(EXPECTED.clientId);
-    expect(ag.transport.clientSecret).toBe(EXPECTED.clientSecret);
-  });
-
-  it("google client shared by gemini + gemini-cli", async () => {
-    const { GOOGLE_OAUTH_CLIENT } = await import("../../open-sse/providers/shared.js");
-    expect(GOOGLE_OAUTH_CLIENT).toEqual(GOOGLE);
+    expect(ag.transport.clientId).toBe(ANTIGRAVITY_OAUTH_CLIENT.clientId);
+    expect(ag.transport.clientSecret).toBe(ANTIGRAVITY_OAUTH_CLIENT.clientSecret);
     const gemini = (await import("../../open-sse/providers/registry/gemini.js")).default;
     const gc = (await import("../../open-sse/providers/registry/gemini-cli.js")).default;
-    expect(gemini.transport.clientSecret).toBe(GOOGLE.clientSecret);
-    expect(gc.transport.clientSecret).toBe(GOOGLE.clientSecret);
+    expect(gemini.transport.clientId).toBe(GOOGLE_OAUTH_CLIENT.clientId);
+    expect(gemini.transport.clientSecret).toBe(GOOGLE_OAUTH_CLIENT.clientSecret);
+    expect(gc.transport.clientId).toBe(GOOGLE_OAUTH_CLIENT.clientId);
+    expect(gc.transport.clientSecret).toBe(GOOGLE_OAUTH_CLIENT.clientSecret);
   });
 
   // Guard: oauth.js must spread shared clients + derive from registry (PROVIDER_OAUTH).
@@ -41,10 +37,9 @@ describe("antigravity oauth client (deduped)", () => {
     expect(src).toContain('import { ANTIGRAVITY_OAUTH_CLIENT, GOOGLE_OAUTH_CLIENT } from "open-sse/providers/shared.js"');
     expect(src).toContain("...ANTIGRAVITY_OAUTH_CLIENT");
     expect(src).toContain("...GOOGLE_OAUTH_CLIENT");
-    // authorizeUrl now lives in registry; oauth.js derives via PROVIDER_OAUTH spread
     expect(src).toContain('PROVIDER_OAUTH["antigravity"]');
     expect(src).toContain('PROVIDER_OAUTH["gemini-cli"]');
-    expect(src).not.toContain(EXPECTED.clientSecret); // antigravity secret no longer hardcoded here
-    expect(src).not.toContain(GOOGLE.clientSecret);   // gemini secret no longer hardcoded here
+    expect(src).not.toContain("GOCSPX");
+    expect(src).not.toContain("apps.googleusercontent.com");
   });
 });

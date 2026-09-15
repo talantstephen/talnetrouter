@@ -82,14 +82,16 @@ export const ANTIGRAVITY_IDE_VERSION = "2.11.0";
 export const ANTIGRAVITY_IDE_BASE_URL = "https://daily-cloudcode-pa.googleapis.com";
 export const ANTIGRAVITY_IDE_USER_AGENT = `antigravity/ide/${ANTIGRAVITY_IDE_VERSION} darwin/arm64`;
 
-// Antigravity OAuth client credentials (public CLI client — duplicated in usage.js + src/lib/oauth)
+// Antigravity OAuth client credentials — env-driven (gitignored .env) with placeholder fallback.
+// Set ANTIGRAVITY_OAUTH_CLIENT_ID / ANTIGRAVITY_OAUTH_CLIENT_SECRET to enable Antigravity OAuth.
 export const ANTIGRAVITY_OAUTH_CLIENT = {
-  clientId: "antigravity-oauth-client-id",
-  clientSecret: "antigravity-oauth-client-secret"
+  clientId: process.env.ANTIGRAVITY_OAUTH_CLIENT_ID || "antigravity-oauth-client-id",
+  clientSecret: process.env.ANTIGRAVITY_OAUTH_CLIENT_SECRET || "antigravity-oauth-client-secret",
 };
 
-// Gemini (Google) OAuth client credentials (public CLI client — shared by gemini, gemini-cli, src/lib/oauth)
+// Gemini (Google) OAuth client credentials — env-driven (gitignored .env) with placeholder fallback.
+// Set GEMINI_OAUTH_CLIENT_ID / GEMINI_OAUTH_CLIENT_SECRET to enable gemini/gemini-cli OAuth.
 export const GOOGLE_OAUTH_CLIENT = {
-  clientId: "google-oauth-client-id",
-  clientSecret: "google-oauth-client-secret"
+  clientId: process.env.GEMINI_OAUTH_CLIENT_ID || "google-oauth-client-id",
+  clientSecret: process.env.GEMINI_OAUTH_CLIENT_SECRET || "google-oauth-client-secret",
 };
