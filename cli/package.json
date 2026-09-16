@@ -55,5 +55,8 @@
   "devDependencies": {
     "esbuild": "^0.25.12",
     "nodemon": "^3.1.14"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
   }
 }
