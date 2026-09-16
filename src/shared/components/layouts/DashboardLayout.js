@@ -101,9 +101,9 @@ export default function DashboardLayout({ children }) {
               <img
                 src="/pp.jpg"
                 alt="TalNet Computers"
-                width={48}
-                height={60}
-                className="w-12 h-[60px] rounded-md object-cover border border-border-subtle shadow-sm"
+                width={56}
+                height={70}
+                className="w-14 h-[70px] rounded-md object-cover border border-border-subtle shadow-sm"
                 loading="lazy"
                 decoding="async"
               />
