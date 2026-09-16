@@ -308,7 +308,7 @@ export default function Sidebar({ onClose }) {
               <span className="material-symbols-outlined text-[18px] group-hover:text-primary transition-colors">
                 computer
               </span>
-              <span className="text-[13px] font-medium">9Remote</span>
+              <span className="text-[13px] font-medium">TalNet Remote</span>
             </button>
 
             {/* 9English */}
