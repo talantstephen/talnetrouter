@@ -20,7 +20,7 @@ export const metadata = {
   title: "TalNet Router - AI Infrastructure Management",
   description: "One endpoint for all your AI providers. Manage keys, monitor usage, and scale effortlessly.",
   icons: {
-    icon: [{ url: "/pp.jpg", type: "image/jpeg" }],
+    icon: [{ url: "/logo.png", type: "image/png" }],
   },
 };
 

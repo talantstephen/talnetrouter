@@ -96,7 +96,31 @@ export default function DashboardLayout({ children }) {
         <div className="landing-grid absolute inset-0 pointer-events-none -z-10" aria-hidden="true" />
         <Header key={pathname} onMenuClick={() => setSidebarOpen(true)} />
         <div className={`flex-1 overflow-y-auto custom-scrollbar ${pathname === "/dashboard/basic-chat" ? "" : "p-6 lg:p-10"} ${pathname === "/dashboard/basic-chat" ? "flex flex-col overflow-hidden" : ""}`}>
-          <div className={`${pathname === "/dashboard/basic-chat" ? "flex-1 w-full h-full flex flex-col" : "max-w-7xl mx-auto"}`}>{children}</div>
+          <div className={`${pathname === "/dashboard/basic-chat" ? "flex-1 w-full h-full flex flex-col" : "max-w-7xl mx-auto"}`}>
+            <div className="flex items-center gap-4 pb-5 mb-6 border-b border-border-subtle">
+              <img
+                src="/pp.jpg"
+                alt="TalNet Computers"
+                width={48}
+                height={60}
+                className="w-12 h-[60px] rounded-md object-cover border border-border-subtle shadow-sm"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="flex flex-col">
+                <span className="text-base font-semibold text-text-main leading-tight">TalNet Computers</span>
+                <a
+                  href="https://talnetcomputers.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-brand-500 hover:underline"
+                >
+                  https://talnetcomputers.com
+                </a>
+                <span className="text-sm text-text-muted">Contact: +91 7994340373</span>
+              </div>
+            </div>
+            {children}</div>
         </div>
       </main>
     </div>

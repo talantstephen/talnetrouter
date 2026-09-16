@@ -121,7 +121,7 @@ export default function Sidebar({ onClose }) {
         <div className="px-6 py-4 flex flex-col gap-2">
           <Link href="/dashboard" className="flex items-center gap-3">
             <img
-              src="/pp.jpg"
+              src="/logo.png"
               alt="TalNet Router"
               width={36}
               height={45}
