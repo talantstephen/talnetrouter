@@ -72,11 +72,14 @@ Result: Never stop coding, minimal cost + 20-40% token savings via RTK
 
 ## ⚡ Quick Start
 
-**1. Install globally:**
+**1. Install from source:**
 
 ```bash
-npm install -g talnetrouter
-talnetrouter
+git clone https://github.com/talantstephen/talnetrouter.git
+cd talnetrouter
+cp .env.example .env
+npm install
+PORT=20128 NEXT_PUBLIC_BASE_URL=http://localhost:20128 npm run dev
 ```
 
 🎉 Dashboard opens at `http://localhost:20128`
@@ -95,23 +98,6 @@ Claude Code/Codex/OpenClaw/Cursor/Cline Settings:
 ```
 
 **That's it!** Start coding with FREE AI models.
-
-**Alternative: run from source (this repository):**
-
-This repository package is private (`talnetrouter-app`), so source/Docker execution is the expected local development path.
-
-```bash
-cp .env.example .env
-npm install
-PORT=20128 NEXT_PUBLIC_BASE_URL=http://localhost:20128 npm run dev
-```
-
-Production mode:
-
-```bash
-npm run build
-PORT=20128 HOSTNAME=0.0.0.0 NEXT_PUBLIC_BASE_URL=http://localhost:20128 npm run start
-```
 
 Default URLs:
 
