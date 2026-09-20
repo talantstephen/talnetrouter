@@ -69,6 +69,25 @@
 
 ---
 
+## 📋 环境要求
+
+克隆前请先安装以下工具：
+
+| 工具 | 用途 | 下载 |
+|------|------|------|
+| **Git** | 克隆代码仓库并拉取更新 | [https://git-scm.com/downloads](https://git-scm.com/downloads) |
+| **Node.js**（建议 v20+ LTS） | 构建并运行应用（`npm install`、`npm run dev`） | [https://nodejs.org/zh-cn](https://nodejs.org/zh-cn) |
+
+验证安装：
+
+```bash
+git --version
+node --version
+npm --version
+```
+
+---
+
 ## ⚡ 快速开始
 
 **1. 全局安装：**

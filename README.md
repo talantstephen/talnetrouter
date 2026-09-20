@@ -70,6 +70,25 @@ Result: Never stop coding, minimal cost + 20-40% token savings via RTK
 
 ---
 
+## 📋 Prerequisites
+
+Before cloning, make sure you have these installed:
+
+| Tool | Why you need it | Download |
+|------|-----------------|----------|
+| **Git** | To clone the repository and pull updates | [https://git-scm.com/downloads](https://git-scm.com/downloads) |
+| **Node.js** (v20+ LTS recommended) | To build and run the app (`npm install`, `npm run dev`) | [https://nodejs.org/](https://nodejs.org/) |
+
+Verify your installation:
+
+```bash
+git --version
+node --version
+npm --version
+```
+
+---
+
 ## ⚡ Quick Start
 
 **1. Install from source:**
